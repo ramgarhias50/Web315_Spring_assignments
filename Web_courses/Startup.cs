@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace Web_courses
 {
@@ -24,6 +25,9 @@ namespace Web_courses
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<coursesContext>(options =>
+                    options.UseSqlite(Configuration.GetConnectionString("coursesContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
