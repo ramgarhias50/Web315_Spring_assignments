@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Web_courses;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Web_courses.Pages_Courses
 {
     public class IndexModel : PageModel
@@ -18,11 +18,23 @@ namespace Web_courses.Pages_Courses
             _context = context;
         }
 
-        public IList<Course> Course { get;set; }
+        public IList<Course> Course { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+
+
 
         public async Task OnGetAsync()
         {
-            Course = await _context.Course.ToListAsync();
+            var course = from m in _context.Courses
+                         select m;
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                course = course.Where(s => s.Title.Contains(SearchString));
+            }
+            Course = await course.ToListAsync();
+
+
         }
     }
 }
