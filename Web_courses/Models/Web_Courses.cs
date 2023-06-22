@@ -12,7 +12,6 @@ namespace Web_courses
         public DateTime LaunchDate { get; set; }
         [DataType(DataType.Date)]
         public string Instructor { get; set; }
-
         public string coursesCategory { get; set; }
         public int ratings {get; set;}
         public string reviews {get; set;}

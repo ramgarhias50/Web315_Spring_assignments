@@ -40,6 +40,16 @@
                 <span asp-validation-for="Course.coursesCategory" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Course.ratings" class="control-label"></label>
+                <input asp-for="Course.ratings" class="form-control" />
+                <span asp-validation-for="Course.ratings" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Course.reviews" class="control-label"></label>
+                <input asp-for="Course.reviews" class="form-control" />
+                <span asp-validation-for="Course.reviews" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
