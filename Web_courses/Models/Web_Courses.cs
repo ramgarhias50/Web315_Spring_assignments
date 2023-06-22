@@ -14,6 +14,9 @@ namespace Web_courses
         public string Instructor { get; set; }
 
         public string coursesCategory { get; set; }
+        public int ratings {get; set;}
+        public string reviews {get; set;}
+
 
 
     }
