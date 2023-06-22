@@ -9,3 +9,9 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 5.
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.*
 
 dotnet-aspnet-codegenerator razorpage -m Course -dc coursesContext -udl -outDir Pages/Courses --referenceScriptLibraries -sqlite
+
+
+Assignment 2
+dotnet ef migrations add rating
+dotnet ef migrations add reviews
+dotnet ef database update
