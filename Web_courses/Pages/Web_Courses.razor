@@ -1,7 +1,7 @@
 ﻿@page "/Web_Courses"
 <h3>Web_Courses</h3>
 
-<input type="number" name="courseShow" id="" max="5" @bind-value="limit" @oninput="HandleInputChange">
+<input type="number" name="courseShow" @bind-value="limit" @oninput="(ChangeEventArgs e) => { if (int.TryParse(e.Value.ToString(), out int value) && value >= 0 && value <= 5) { limit = value; StateHasChanged(); } }">
 <button class="btn btn-primary" @onclick="showCourses">Click me to see Web_Courses</button>
 
 <ul>
@@ -11,6 +11,7 @@
     }
 </ul>
 
+
 @code {
     private string[] Courses = new string[0];
     private int limit = 5;
@@ -19,14 +20,5 @@
     {
         Courses = new string[] { "PHP", "JavaScript", "HTML", "CSS", "ASP.NET" };
         StateHasChanged();
-    }
-
-    private void HandleInputChange(ChangeEventArgs e)
-    {
-        if (int.TryParse(e.Value.ToString(), out int value))
-        {
-            limit = value;
-            StateHasChanged();
-        }
     }
 }
