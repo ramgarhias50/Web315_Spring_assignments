@@ -1,6 +1,20 @@
 ﻿@page "/Web_Courses"
 <h3>Web_Courses</h3>
+<button class="btn btn-primary" @onclick="showCourses">Click me to see Web_Courses</button>
+
+<ul>@foreach (var item in Courses)
+    {
+        <li>@item</li>
+    }
+</ul>
 
 @code {
+    private string[] Courses = new string[0];
 
+    private void showCourses()
+    {
+        Courses = new string[]{
+"PHP","JavaScript","HTML","CSS","ASP.NET"
+};
+    }
 }
