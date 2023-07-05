@@ -1,8 +1,11 @@
 ﻿@page "/Web_Courses"
 <h3>Web_Courses</h3>
+
+<input type="number" name="courseShow" id="" max="5" @bind-value="limit" @oninput="HandleInputChange">
 <button class="btn btn-primary" @onclick="showCourses">Click me to see Web_Courses</button>
 
-<ul>@foreach (var item in Courses)
+<ul>
+    @foreach (var item in Courses.Take(limit))
     {
         <li>@item</li>
     }
@@ -10,11 +13,20 @@
 
 @code {
     private string[] Courses = new string[0];
+    private int limit = 5;
 
     private void showCourses()
     {
-        Courses = new string[]{
-"PHP","JavaScript","HTML","CSS","ASP.NET"
-};
+        Courses = new string[] { "PHP", "JavaScript", "HTML", "CSS", "ASP.NET" };
+        StateHasChanged();
+    }
+
+    private void HandleInputChange(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value.ToString(), out int value))
+        {
+            limit = value;
+            StateHasChanged();
+        }
     }
 }
